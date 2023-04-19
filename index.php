@@ -50,18 +50,11 @@
 
     ];
 
-    foreach($hotels as $key => $hotel) {
-        foreach($hotel as $date) {
-            echo $date . '<br>';
-        }
-    }
-    
 ?>
 <form action="index.php" method="GET">
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Parking</th>
@@ -70,15 +63,16 @@
             </tr>
         </thead>
         <tbody>
+            <?php foreach($hotels as $hotel) { ?>
             <tr>
-            <th scope="row">1</th>
-            <td><?php echo $hotels[0]['name'] ?></td>
-            <td><?php echo $hotels[0]['description'] ?></td>
-            <td><?php echo $hotels[0]['parking'] ?></td>
-            <td><?php echo $hotels[0]['vote'] ?></td>
-            <td><?php echo $hotels[0]['distance_to_center'] ?></td>
+                <td><?php echo $hotel['name'] ?></td>
+                <td><?php echo $hotel['description'] ?></td>
+                <td><?php echo $hotel['parking'] ? 'SI' : 'NO' ?></td>
+                <td><?php echo $hotel['vote'] ?></td>
+                <td><?php echo $hotel['distance_to_center'] ?></td>
             </tr>
-            <tr>
+            <?php } ?>
+            <!-- <tr>
             <th scope="row">2</th>
             <td><?php echo $hotels[1]['name'] ?></td>
             <td><?php echo $hotels[1]['description'] ?></td>
@@ -107,7 +101,7 @@
             <td><?php echo $hotels[4]['parking'] ?></td>
             <td><?php echo $hotels[4]['vote'] ?></td>
             <td><?php echo $hotels[4]['distance_to_center'] ?></td>
-            </tr>
+            </tr> -->
         </tbody>
     </table>
 </form>
